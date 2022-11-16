@@ -1,0 +1,34 @@
+USE [LandonHotel]
+GO
+
+/****** Object:  Table [dbo].[Hospedes]    Script Date: 08/11/2022 10:47:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Hospedes](
+	[ID_HOSPEDE] [int] IDENTITY(1000,1) NOT NULL,
+	[NOME] [nvarchar](50) NOT NULL,
+	[SOBRENOME] [nvarchar](50) NOT NULL,
+	[ENDERECO] [nvarchar](50) NULL,
+	[CIDADE] [nvarchar](25) NULL,
+	[ESTADO] [nvarchar](20) NOT NULL,
+	[CEP] [nvarchar](10) NOT NULL,
+	[PAIS] [nvarchar](25) NOT NULL,
+	[TIMESTAMP] [datetime] NOT NULL,
+ CONSTRAINT [PK_Hospedes] PRIMARY KEY CLUSTERED 
+(
+	[ID_HOSPEDE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Hospedes] ADD  CONSTRAINT [DF_Hospedes_PAIS]  DEFAULT (N'BRASIL') FOR [PAIS]
+GO
+
+ALTER TABLE [dbo].[Hospedes] ADD  CONSTRAINT [DF_Hospedes_TOMESTAMP]  DEFAULT (getdate()) FOR [TIMESTAMP]
+GO
+
+
